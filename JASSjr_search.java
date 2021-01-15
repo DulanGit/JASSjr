@@ -159,6 +159,11 @@ class JASSjr_search
 		*/
 		System.out.print("Please enter term to search:");
 		Scanner stdin = new Scanner(System.in);
+		// Create stop words object from class
+		StopWords sw = new StopWords();
+
+		// Create porter stemmer object from class
+		PorterStemmer porter = new PorterStemmer();
 		while (stdin.hasNextLine())
 			{
 			/*
@@ -170,7 +175,16 @@ class JASSjr_search
 			StringTokenizer tokenizer = new StringTokenizer(stdin.nextLine());
 			while (tokenizer.hasMoreTokens())
 				{
-				String token = tokenizer.nextToken();                
+				String token = tokenizer.nextToken();
+				// Implement stop words filter
+				if(sw.is_stopword(token)) {
+					System.out.println("Skipping Stop word : '" + token+"'");
+					continue;
+				}
+
+				// Simple Porter Stemmer
+				token = porter.stem(token);
+                
 				/*
 				  If the first token is a number then assume a TREC query number, and skip it
 				*/
