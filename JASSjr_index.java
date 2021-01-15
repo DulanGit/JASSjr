@@ -147,7 +147,7 @@ class JASSjr_index
 						docId++;
 						documentLength = 0;
 			
-						if ((docId % 1000) == 0)
+						if ((docId % 10) == 0)
 							System.out.println(docId + " documents indexed");
 						}
 
