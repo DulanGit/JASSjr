@@ -157,6 +157,7 @@ class JASSjr_search
 		/*
 		  Search (one query per line)
 		*/
+		System.out.print("Please enter term to search:");
 		Scanner stdin = new Scanner(System.in);
 		while (stdin.hasNextLine())
 			{
@@ -227,9 +228,12 @@ class JASSjr_search
 			  Print the (at most) top 1000 documents in the results list in TREC eval format which is:
 			  query-id Q0 document-id rank score run-name
 			*/
-			for (int position = 0; rsv[rsvPointers[position]] != 0.0 && position < 1000; position++)
+			int doc_number = 5;
+			System.out.print("Showing closest "+doc_number+" documents");
+			for (int position = 0; rsv[rsvPointers[position]] != 0.0 && position < doc_number; position++)
 				System.out.println(queryId + " Q0 " + primaryKey.get(rsvPointers[position]) + " " + (position + 1) + " " + String.format("%.4f", rsv[rsvPointers[position]]) + " JASSjr");
 			}
+			System.out.print("Please enter term to search:");
 		}
     
 	/*
