@@ -112,6 +112,10 @@ class JASSjr_index
 		{
 		int docId = -1;
 		int documentLength = 0;
+		// Create stop words object from class
+		StopWords sw = new StopWords();
+		// Create porter stemmer object from class
+		PorterStemmer porter = new PorterStemmer();
 
 		/*
 		  Make sure we have one paramter, the filename
@@ -168,6 +172,15 @@ class JASSjr_index
 					  lower case the string
 					*/
 					token = token.toLowerCase();
+
+					// Implement stop words filter
+					if(sw.is_stopword(token)) {
+						System.out.println("Skipping Stop word : '" + token+"'");
+						continue;
+					}
+
+					// Simple Porter Stemmer
+					token = porter.stem(token);
 
 					/*
 					  truncate any long tokens at 255 charactes (so that the length can be stored first and in a single byte)
