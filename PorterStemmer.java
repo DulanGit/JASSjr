@@ -10,11 +10,17 @@ public class PorterStemmer {
         else if(token.endsWith("ss")){
             token = token;
         }
-        if(token.endsWith("s")){
+        else if(token.endsWith("s")){
             token = token.substring(0, token.length()-1);
         }
+        else if(token.endsWith("eed")){
+            token = token.substring(0, token.length()-1);
+        }
+        else if(token.endsWith("ed")){
+            token = token.substring(0, token.length()-2);
+        }
         if(!pre_tocken.equals(token)){
-            System.out.println("Porter stemmer convert '"+pre_tocken+ "' to '"+token+"'");
+            System.out.println("Porter stemmer convert '" + pre_tocken + "' to '" + token + "'");
         }
 
         return token;
