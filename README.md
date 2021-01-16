@@ -41,13 +41,21 @@ Queries a sequences of words.  If the first token is a number it is assumed to t
 JASSjr will produce (on stdout) a [trec_eval](https://github.com/usnistgov/trec_eval) compatible results list.
 
 ## Java ##
-The Java version is build in the same way, but run with 
+
+The Java version is build in the same way, but if you want to build it seperately
+
+	javac JASSjr_index
+	javac JASSjr_search
+	
+Then run
 
 	java JASSjr_index <filename>
 
 and
 
 	java JASSjr_search
+	
+Then type any word to search 
 
 # Evaluation #
 * Indexing the TREC WSJ collection of 173,252 documents takes less than 20 seconds on my Mac (3.2 GHz Intel Core i5).
