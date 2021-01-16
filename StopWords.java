@@ -11,7 +11,11 @@ public class StopWords {
     }
 
     boolean is_stopword(String token){
-        return this.stopwords.contains(token);
+        boolean ret = this.stopwords.contains(token);
+        if(ret){
+            System.out.println("Skipping Stop word : '" + token+"'");
+        }
+        return ret;
     }
 
 }
